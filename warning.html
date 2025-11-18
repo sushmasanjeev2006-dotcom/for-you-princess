@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Royal Warning — Shub</title>
+<link rel="stylesheet" href="style.css"/>
+<style>
+/* small override for the warning page */
+.warningWrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;background:linear-gradient(180deg,#fff0f7,#ffecf8)}
+.warnBox{max-width:520px;background:linear-gradient(180deg,rgba(255,255,255,0.95),#fff);padding:28px;border-radius:14px;border:1px solid rgba(220,150,180,0.08);text-align:center;box-shadow:0 30px 80px rgba(200,80,140,0.08)}
+.alertLabel{display:inline-block;padding:6px 10px;border-radius:8px;background:#ff2f7a;color:white;font-weight:700;margin-bottom:12px}
+.titleWarn{color:#b00059;font-size:22px;margin:8px 0}
+.messageWarn{color:#6b003f;font-size:18px}
+.ackBtn{margin-top:16px;padding:10px 14px;border-radius:10px;background:#ff2f7a;color:#fff;border:0;font-weight:700}
+</style>
+</head>
+<body>
+  <div class="warningWrap">
+    <div class="warnBox">
+      <div class="alertLabel">PRIORITY</div>
+      <div class="titleWarn">⚠️ Royal Warning for Shub ⚠️</div>
+      <div class="messageWarn"><strong>Reply kar diya karo jaldi, nahi toh <em>maar khaoge!</em></strong></div>
+      <p class="muted">— Issued by the Official Princess Authority (compliance strongly encouraged)</p>
+      <div style="margin-top:14px">
+        <button class="ackBtn" onclick="location.href='index.html'">Acknowledge Warning</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
