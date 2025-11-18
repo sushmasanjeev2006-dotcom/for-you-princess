@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Mystic Portal — For Shub</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- subtle background canvas (particles) -->
+  <canvas id="bgCanvas" class="bgCanvas" aria-hidden="true"></canvas>
+
+  <!-- ENTRY overlay -->
+  <div id="entry" class="overlay">
+    <div class="entryCard">
+      <div class="brand">
+        <div class="brandMark" aria-hidden="true">
+          <!-- refined portal glyph -->
+          <svg viewBox="0 0 96 96" width="64" height="64" aria-hidden="true">
+            <defs><linearGradient id="gA" x1="0" x2="1"><stop offset="0" stop-color="#ffdff5"/><stop offset="1" stop-color="#ffb3ea"/></linearGradient></defs>
+            <circle cx="48" cy="48" r="42" fill="url(#gA)" opacity="0.95" stroke="#ffe0f0" stroke-width="2"></circle>
+            <path d="M24 52 C36 66,60 66,72 52" stroke="#ff7ac6" stroke-width="3" fill="none" stroke-linecap="round"></path>
+          </svg>
+        </div>
+        <div class="brandText">
+          <div class="title">Mystic Portal</div>
+          <div class="subtitle">A Princess Day Gift for <strong>Shub</strong></div>
+        </div>
+      </div>
+
+      <p class="lead">Enter a short quest: collect coins, complete missions, play a quick Tic-Tac-Toe against the portal AI, then get a premium certificate.</p>
+
+      <div class="entryActions">
+        <button id="enterBtn" class="btn primary">Enter Portal</button>
+        <button id="qrBtn" class="btn ghost">Show Page QR</button>
+      </div>
+
+      <div class="note muted">He loves anime, gym, and the white Monster. We kept his bracelet in mind.</div>
+    </div>
+  </div>
+
+  <!-- APP container -->
+  <main id="app" class="app hidden" role="main">
+    <header class="topbar">
+      <div class="left">
+        <div class="portalTitle">Mystic Portal</div>
+        <div class="sub small">Shub's Quest</div>
+      </div>
+      <div class="right">
+        <div class="status">Coins: <span id="coins">0</span></div>
+        <div class="status">Stage: <span id="stage">0</span></div>
+      </div>
+    </header>
+
+    <section class="content">
+      <!-- Stage container: only one visible at a time -->
+      <div id="stage0" class="stageCard">
+        <h2>Stage 0 — Gateway</h2>
+        <p class="muted">A short warmup. Press Start to step into the realm.</p>
+        <div class="centerRow">
+          <button id="startBtn" class="btn primary">Start Quest</button>
+        </div>
+      </div>
+
+      <div id="stage1" class="stageCard hidden">
+        <h2>Stage 1 — Coin Rush</h2>
+        <p class="muted">Tap falling mystic coins (15s). Each tap = +1 coin.</p>
+        <div class="gameArea">
+          <canvas id="coinCanvas" class="coinCanvas" width="900" height="280" aria-label="Coin collection"></canvas>
+        </div>
+        <div class="controlsRow">
+          <button id="playCoins" class="btn primary">Play Round</button>
+          <div class="timer">Time: <span id="time">15</span>s</div>
+        </div>
+      </div>
+
+      <div id="stage2" class="stageCard hidden">
+        <h2>Stage 2 — Missions</h2>
+        <p class="muted">Complete a few short missions — choices reward coins and story responses.</p>
+        <div id="missionBox" class="missionBox"></div>
+        <div class="controlsRow">
+          <button id="nextMission" class="btn primary">Next Mission</button>
+          <button id="skipMissions" class="btn ghost">Skip Missions</button>
+        </div>
+      </div>
+
+      <div id="stage3" class="stageCard hidden">
+        <h2>Stage 3 — Tic-Tac-Toe vs Portal AI</h2>
+        <p class="muted">Beat the portal AI (you are 'X', portal 'O'). The AI uses an unbeatable minimax algorithm.</p>
+        <div id="ttt" class="ttt">
+          <div id="board" class="board"></div>
+          <div class="tttControls">
+            <button id="tttReset" class="btn ghost">Reset</button>
+            <div id="tttMsg" class="muted small">Your move.</div>
+          </div>
+        </div>
+        <div class="controlsRow">
+          <button id="finishToCert" class="btn primary">Finish & Prepare Certificate</button>
+        </div>
+      </div>
+
+      <div id="stage4" class="stageCard hidden">
+        <h2>Stage 4 — Certificate Preview</h2>
+        <p class="muted">A premium certificate will be created — high-res PNG downloadable and shareable.</p>
+        <canvas id="certCanvas" width="1200" height="800" class="previewCert"></canvas>
+        <div class="controlsRow">
+          <button id="makeCert" class="btn primary">Generate Certificate</button>
+          <button id="openCert" class="btn ghost hidden">Open Certificate Page</button>
+        </div>
+      </div>
+
+      <div id="stage5" class="stageCard hidden">
+        <h2>Final — Portal Message</h2>
+        <p class="muted">Congrats. You may open the final message to send to Shub.</p>
+        <div class="centerRow">
+          <a id="openWarning" class="btn primary" href="warning.html" target="_blank" rel="noopener">Open Final Message</a>
+          <button id="restart" class="btn ghost">Play Again</button>
+        </div>
+      </div>
+
+    </section>
+
+    <footer class="footer muted">Made with subtle glitter, anime-mood, and gym-energy.</footer>
+  </main>
+
+  <!-- QR Modal -->
+  <div id="qrModal" class="modal hidden">
+    <div class="modalCard">
+      <h3>Scan to open on phone</h3>
+      <img id="qrImg" alt="QR code" style="width:260px;height:260px;display:block;margin:12px auto">
+      <div class="centerRow"><button id="closeQr" class="btn ghost">Close</button></div>
+    </div>
+  </div>
+
+<script src="app.js" defer></script>
+</body>
+</html>
